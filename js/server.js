@@ -9,15 +9,20 @@ Bonus:
 filtrare i dati sulla base di parametri in query string
  */
 
+//server
 const express = require("express");//associare a variabile l'oggetto express
 const server = express();
 const PORT = 3000;
+//other var
+const {lista} = require("./lista.js");
 
 server.get("/",(req,res)=>{
-    res.send("<h1>Server del mio blog</h1>");
+    //res.send("<h1>Server del mio blog</h1>");
+    res.json(lista);
 });
 
 server.listen(PORT,()=>{
     console.log("Server del mio blog");
     console.log(`Server running on http://localhost:${PORT}`);
+    console.log(lista);
 });
