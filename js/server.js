@@ -15,14 +15,25 @@ const server = express();
 const PORT = 3000;
 //other var
 const {lista} = require("./lista.js");
+server.use(express.static("public")) ;
 
+//qua partendo dal port 3000 ho l'inizio del server
 server.get("/",(req,res)=>{
-    //res.send("<h1>Server del mio blog</h1>");
-    res.json(lista);
+    res.send("<h1>Server del mio blog</h1>");
+    //res.json(lista);
+});
+//qua dall'inizio aggiungo un path diverso che mi porta da un altra parte
+server.get("/bacheca",(req,res)=>{
+    const obj ={
+        lista,
+        num:lista.length
+    };
+    res.json(obj);    
+    console.log(obj.num);
 });
 
+//qua sto in ascolto per la porta 3000
 server.listen(PORT,()=>{
     console.log("Server del mio blog");
     console.log(`Server running on http://localhost:${PORT}`);
-    console.log(lista);
 });
