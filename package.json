@@ -1,11 +1,11 @@
 {
   "name": "express-blog-intro",
   "version": "1.0.0",
-  "main": "./js/server.js",
+  "main": "./server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./js/server.js",
-    "dev":"node --watch ./js/server.js"
+    "start": "node ./server.js",
+    "dev":"node --watch ./server.js"
   },
   "keywords": [],
   "author": "",
