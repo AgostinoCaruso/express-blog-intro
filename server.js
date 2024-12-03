@@ -38,9 +38,7 @@ server.get("/bacheca/obj/:titolo", (req, res) => {
   let titolo = req.params.titolo;
 
   // Trova un post che include la stringa passata
-  const post = lista.find((post) =>
-    post.titolo.toLowerCase().includes(titolo.toLowerCase())
-  );
+  const post = lista.find((post) => post.titolo.toLowerCase().includes(titolo.toLowerCase()));
 
   if (post) {
 
@@ -63,18 +61,16 @@ server.get("/bacheca/index/:index", (req, res) => {
 });
 
 //ti printa tutti i titoli delle img dentro a lista
-server.get("/img", (req, res) => {
+server.get("/bacheca/img", (req, res) => {
   res.json(lista.map((post) => post.img));
 });
 
 //ti printa a schermo l'immagine del titolo collegata
-server.get("/img/:titolo", (req, res) => {
+server.get("/bacheca/img/:titolo", (req, res) => {
   let titolo = req.params.titolo;
 
   // Trova un post che include la stringa passata
-  const post = lista.find((post) =>
-    post.titolo.toLowerCase().includes(titolo.toLowerCase())
-  );
+  const post = lista.find((post) => post.titolo.toLowerCase().includes(titolo.toLowerCase()));
 
   if (post) {
 
@@ -84,6 +80,12 @@ server.get("/img/:titolo", (req, res) => {
     res.status(404).send("Immagine non trovata"); 
   }
 });
+//default catch for typo url
+server.get("*", (req,res)=>{
+  res.send("<h1>page not found</h1>");
+});
+
+
 
 //qua sto in ascolto per la porta 3000
 server.listen(PORT, () => {
